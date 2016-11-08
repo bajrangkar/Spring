@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+        
+    <bean id="address" class="com.spring.Address">
+    	<constructor-arg value="101"/>
+    	<constructor-arg value="HSR"/>
+    	<constructor-arg value="Banglore"/>
+    </bean>
+    
+    <bean id="order1" class="com.spring.Order">
+    	<property name="orderId" value="11"/>
+    	<property name="orderDate" value="10-10-10"/>
+    	<property name="qty" value="1"/>
+    	<property name="cost" value="999.99"/>
+    	<property name="status" value="New"/>
+    </bean>
+	
+	<bean id="order2" class="com.spring.Order">
+    	<property name="orderId" value="12"/>
+    	<property name="orderDate" value="10-10-10"/>
+    	<property name="qty" value="9"/>
+    	<property name="cost" value="99.99"/>
+    	<property name="status" value="New"/>
+    </bean>
+    
+    <bean id="cust" class="com.spring.Customer">
+		<constructor-arg value="1111"/>
+		<constructor-arg value="James"/>
+		<constructor-arg>
+			<list>
+				<value>a@java</value>
+				<value>b@java</value>
+				<value>c@java</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg>
+			<set>
+				<value>111</value>
+				<value>222</value>
+				<value>333</value>
+			</set>
+		</constructor-arg>
+		<constructor-arg ref="address"/>
+		
+		<property name="refs">
+			<map>
+				<entry key="AAA" value="1111"/>
+				<entry key="BBB" value="2222"/>
+				<entry key="CCC" value="3333"/>
+			</map>
+		</property>
+		<property name="myProperties">
+			<props>
+				<prop key="AABB">1234</prop>
+				<prop key="BBCC">2345</prop>
+				<prop key="CCDD">3456</prop>
+			</props>
+		</property>
+		<property name="orders">
+			<set>
+				<ref local="order1"/>
+				<ref local="order2"/>
+			</set>
+		</property>
+	</bean>
+</beans>
