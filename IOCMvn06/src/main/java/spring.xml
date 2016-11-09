@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+        
+    <bean id="ao" class="com.spring.A" p:a="99" p:msg1="Welcome to Spring 3.0"/>
+	<bean id="bo1" class="com.spring.B" p:b="22" p:a="11" p:msg1="Hai" p:msg2="Hello Guys"/>
+	<bean id="bo2" class="com.spring.B" p:b="22" p:msg2="Hello Guys"/>
+	<!-- 
+	<bean id="hello" class="com.spring.Hello" autowire="byType"/>
+	 -->
+	<bean id="hello" class="com.spring.Hello" p:aobj-ref="ao" p:bobj-ref="bo1"/>
+</beans>
