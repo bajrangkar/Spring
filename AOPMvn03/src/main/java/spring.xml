@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"		
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+	<context:annotation-config/>
+	<aop:aspectj-autoproxy/>
+	<bean id="ss" class="com.spring.aop.SecurityService"/>
+	<bean id="ls" class="com.spring.aop.LogService"/>
+	
+	<bean id="mia" class="com.spring.aop.JavaMIAdvice"/>
+	<bean id="mba" class="com.spring.aop.JavaMBAdvice"/>
+	<bean id="mra" class="com.spring.aop.JavaMRAdvice"/>
+	<bean id="mta" class="com.spring.aop.JavaMTAdvice"/>
+	
+	<bean id="hello" class="com.spring.aop.HelloServiceImpl"/>
+	<bean id="hai" class="com.spring.aop.HaiServiceImpl"/>
+	
+	<bean id="PC1" class="org.springframework.aop.aspectj.AspectJExpressionPointcut">
+		<property name="expression" value="execution(*
+		com.spring.aop.HelloService.m*(..))"/>
+	</bean>
+	
+	<bean id="PC2" class="org.springframework.aop.aspectj.AspectJExpressionPointcut">
+		<property name="expression" value="execution(*
+		com.spring.aop.HaiService.am*(..))"/>
+	</bean>
+	
+	<bean name="MBAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="mba"/>
+		<property name="pointcut" ref="PC1"/>
+	</bean>
+	
+	<bean name="MRAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="mra"/>
+		<property name="pointcut" ref="PC1"/>
+	</bean>
+	
+	<bean name="MTAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="mta"/>
+		<property name="pointcut" ref="PC1"/>
+	</bean>
+	
+	<bean name="MIAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="mia"/>
+		<property name="pointcut" ref="PC2"/>
+	</bean>
+	
+	<bean name="MTAdvisor1" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="mta"/>
+		<property name="pointcut" ref="PC2"/>
+	</bean>
+</beans>
