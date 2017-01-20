@@ -1,0 +1,44 @@
+.error{
+	color:red;
+}
+
+.formFieldClass {
+	color : green;
+	font-size : 14px;
+	font-weight : bold;
+}
+
+.formLabelClass {
+	color : black;
+	font-size : 14px;
+	font-weight : bold;
+}
+
+.formButtonClass {
+	color : black;
+	font-size : 20px;
+	font-weight : bold;
+}
+
+body {
+	font-family : "Lucida Grande",verdana,arial,helvetica, sans-serif;
+	font-size : 9px;
+	background-color : #ffffff;
+	margin-top : 0px;
+	text-align : center;
+}
+
+div#container {
+	margin-left:10px;
+	text-slign:left;
+}
+
+.header{
+	width:748px;
+	backgroung-repeat:repeat-x;
+	backgroung-color:#ffffff;
+	border-bottom:1px,dotted,#6600000;
+	font-size=8pt;
+	color:#FFFFFF;
+}
+	
